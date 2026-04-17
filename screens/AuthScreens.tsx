@@ -38,16 +38,16 @@ export const SplashScreen: React.FC<SharedProps> = ({ navigate, setUser }) => {
          </svg>
       </div>
 
-      <div className="absolute top-[540px] w-full text-center z-20 px-8">
+      <div className="absolute top-[480px] w-full text-center z-20 px-8">
          <div className="border-2 border-[#54BCBD] p-4 bg-[#54BCBD]/10 backdrop-blur-sm hidden"></div>
          <h1 className="text-[36px] font-black text-[#6c6c6c] tracking-widest italic mb-4 text-shadow-sticker">欢迎来到食用手册!</h1>
          <h2 className="text-[36px] font-black text-[#6c6c6c] tracking-widest italic text-shadow-sticker">请选择您的身份</h2>
       </div>
 
-      <div className="absolute bottom-[120px] w-full flex flex-col items-center space-y-8 z-20">
+      <div className="absolute bottom-[40px] w-full flex flex-col items-center space-y-8 z-20">
         <AppButton 
           onClick={() => handleSelect('NOOB')}
-          className="w-[220px] h-[54px] flex flex-row items-baseline justify-center gap-2"
+          className="w-[220px] h-[54px] flex flex-row items-center justify-center gap-2"
         >
            <span className="text-xl font-bold text-[#6c6c6c]">厨房小白</span>
            <span className="text-sm font-normal text-[#6c6c6c]">(首次使用)</span>
@@ -55,7 +55,7 @@ export const SplashScreen: React.FC<SharedProps> = ({ navigate, setUser }) => {
 
         <AppButton 
           onClick={() => handleSelect('PRO')}
-          className="w-[220px] h-[54px] flex flex-row items-baseline justify-center gap-2"
+          className="w-[220px] h-[54px] flex flex-row items-center justify-center gap-2"
         >
            <span className="text-xl font-bold text-[#6c6c6c]">厨房大佬</span>
            <span className="text-sm font-normal text-[#6c6c6c]">(使用过)</span>
@@ -189,21 +189,24 @@ export const LoginScreen: React.FC<SharedProps> = ({ navigate, goBack, setUser }
             }}
          />
 
-         <AppInput 
-            label="确认密码：" 
-            type="password" 
-            placeholder="请输入" 
-            value={confirmPassword}
-            onChange={(e) => {
-              setConfirmPassword(e.target.value);
-              // 实时验证密码一致性
-              if (password && e.target.value && password !== e.target.value) {
-                setPasswordError('密码与确认密码不一致');
-              } else {
-                setPasswordError('');
-              }
-            }}
-         />
+         <div className="flex items-center">
+           <span className="text-lg font-bold text-[#6c6c6c] w-[100px]">确认密码：</span>
+           <input 
+              type="password" 
+              placeholder="请输入" 
+              value={confirmPassword}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+                // 实时验证密码一致性
+                if (password && e.target.value && password !== e.target.value) {
+                  setPasswordError('密码与确认密码不一致');
+                } else {
+                  setPasswordError('');
+                }
+              }}
+              className="flex-1 h-12 px-4 rounded bg-white/80 focus:outline-none text-[#6c6c6c] placeholder-[#9a9a9a] border border-transparent focus:border-[#bbbbbb]"
+           />
+         </div>
          {passwordError && (
            <div className="text-red-500 text-sm mt-[-20px] px-2">
              {passwordError}

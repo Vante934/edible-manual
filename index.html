@@ -141,9 +141,81 @@
 }
 </script>
 <link rel="stylesheet" href="/index.css">
+<link rel="stylesheet" href="/src/chat-ui.css">
 </head>
   <body>
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
+  <script type="module" src="/src/chat-ui.js"></script>
+
+    <!-- 悬浮按钮 -->
+<button id="agent-fab" class="chat-agent__fab">
+  <span class="chat-agent__fab-icon">🧑‍🍳</span>
+</button>
+
+<!-- 统计入口按钮 -->
+<button id="agent-stats-btn" class="chat-agent__stats-btn">📊 历史</button>
+
+<!-- 对话面板 -->
+<div id="agent-panel" class="chat-agent__panel">
+  <div class="chat-agent__header">
+    <h3 class="chat-agent__title">小食 AI助手</h3>
+    <button id="agent-close-btn" class="chat-agent__close">&times;</button>
+  </div>
+
+  <!-- 烹饪进度条 -->
+  <div id="agent-progress-container" class="chat-agent__progress-container chat-agent__hidden">
+    <div class="chat-agent__progress-info">
+      <span id="agent-progress-recipe" class="chat-agent__progress-recipe"></span>
+      <span id="agent-progress-step" class="chat-agent__progress-step"></span>
+    </div>
+    <div class="chat-agent__progress-bar">
+      <div id="agent-progress-fill" class="chat-agent__progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- 消息区域 -->
+  <div id="agent-messages" class="chat-agent__messages">
+    <div class="chat-agent__message chat-agent__message--agent">
+      <div class="chat-agent__bubble">你好！我是小食，今天想做点什么好吃的？你可以对我说“开始做菜”。</div>
+    </div>
+  </div>
+
+  <!-- 输入区域 -->
+  <div class="chat-agent__input-area">
+    <button id="agent-camera-btn" class="chat-agent__icon-btn">📷</button>
+    <button id="agent-voice-btn" class="chat-agent__icon-btn chat-agent__voice-btn">🎙️</button>
+    <input type="text" id="agent-input" class="chat-agent__input" placeholder="问问小食...">
+    <button id="agent-send-btn" class="chat-agent__send-btn">发送</button>
+  </div>
+</div>
+
+<!-- 评分弹窗 -->
+<div id="agent-rating-modal" class="chat-agent__modal chat-agent__hidden">
+  <div class="chat-agent__modal-content">
+    <h4 class="chat-agent__modal-title">烹饪完成！请评分</h4>
+    <div id="agent-stars" class="chat-agent__stars">
+      <span class="chat-agent__star" data-value="1">★</span>
+      <span class="chat-agent__star" data-value="2">★</span>
+      <span class="chat-agent__star" data-value="3">★</span>
+      <span class="chat-agent__star" data-value="4">★</span>
+      <span class="chat-agent__star" data-value="5">★</span>
+    </div>
+    <button id="agent-submit-rating" class="chat-agent__btn-primary">提交评分</button>
+  </div>
+</div>
+
+<!-- 统计面板 -->
+<div id="agent-stats-modal" class="chat-agent__modal chat-agent__hidden">
+  <div class="chat-agent__modal-content">
+    <h4 class="chat-agent__modal-title">烹饪历史</h4>
+    <ul id="agent-stats-list" class="chat-agent__stats-list">
+      <!-- 动态插入 -->
+    </ul>
+    <button id="agent-close-stats" class="chat-agent__btn-secondary">关闭</button>
+  </div>
+</div>
+
+
 </body>
 </html>

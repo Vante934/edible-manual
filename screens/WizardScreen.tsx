@@ -232,10 +232,10 @@ export const WizardScreen: React.FC<WizardProps> = ({
         </div>
 
         {/* Grid/Cloud Wrapper */}
-        <div className="px-1 relative flex-1 min-h-[300px]">
+        <div className="px-1 relative flex-1 min-h-[280px]">
             {/* If searching and lots of results, maybe stick to cloud layout */}
             <div className={isCloudLayout 
-                ? "flex flex-wrap justify-center gap-4 px-1 content-start animate-pop-in" 
+                ? "flex flex-wrap justify-center gap-3 px-1 content-start animate-pop-in" 
                 : "grid grid-cols-2 gap-x-6 gap-y-5 auto-rows-min animate-pop-in px-2"
             }>
             {filteredItems.map((item, index) => {
@@ -270,11 +270,11 @@ export const WizardScreen: React.FC<WizardProps> = ({
                         ${bgClass} ${opacityClass} ${rotation}
                         rounded-[10px] shadow-hard text-[#6c6c6c] font-bold transition-all active:scale-95 hover:animate-wiggle
                         ${isCloudLayout ? 'h-[54px] px-6 text-xl w-auto min-w-[80px]' : 'h-[80px] w-full text-lg'}
-                        flex items-center justify-center whitespace-nowrap
+                        flex items-center justify-center
                     `}
                     style={{ animationDelay: `${Math.min(index * 0.02, 0.5)}s` }} // Staggered effect (capped)
                 >
-                    {item}
+                    <span className={isCloudLayout ? 'whitespace-nowrap' : 'text-center px-2'}>{item}</span>
                 </button>
                 );
             })}
@@ -289,7 +289,7 @@ export const WizardScreen: React.FC<WizardProps> = ({
         {!isSingleSelect && (
             <div className="mt-4 mb-4 text-center relative">
                  <div className="w-full h-[1px] bg-[#bbbbbb] absolute top-1/2 left-0 z-0"></div>
-                 <span className="bg-app-bg px-4 relative z-10 text-[#6c6c6c] text-base font-bold italic">没有找到? 在这里输入吧~</span>
+                 <span className="relative z-10 text-[#6c6c6c] text-base font-bold italic px-4">没有找到? 在这里输入吧~</span>
             </div>
         )}
 

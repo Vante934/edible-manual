@@ -165,7 +165,7 @@ export const DiscoveryScreen: React.FC<SharedProps> = ({ navigate }) => {
                      )}
                 </div>
 
-                <AppButton onClick={handleRandom} className="w-[140px] h-[45px] text-lg bg-[#FEFA83]/80 rounded-[5px] shadow-hard relative italic font-black text-[#6c6c6c]">
+                <AppButton onClick={handleRandom} className="w-[140px] h-[45px] text-lg bg-[#FEFA83]/80 rounded-[5px] shadow-hard relative italic font-black text-[#6c6c6c] flex items-center justify-center">
                     Let's 随机
                 </AppButton>
             </div>
